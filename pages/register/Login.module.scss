@@ -1,0 +1,70 @@
+@import "./../../styles/mixin.scss";
+
+._login {
+    background-color: #4eac6d;
+    height: 100vh;
+
+    ._login_container {
+        display: flex;
+        flex-direction: row;
+        height: inherit;
+
+        @include sm {
+            flex-direction: column;
+            height: inherit;
+        }
+
+        ._login_hero {
+            width: 25%;
+
+
+            @include sm {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            ._login__hero_container {
+                padding: 48px;
+                height: 100%;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    bottom: 0;
+
+                    @include sm {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        ._login_box_container {
+            width: 75%;
+            height: inherit;
+
+            @include sm {
+                width: 100%;
+            }
+
+            .login_box {
+                margin: 24px;
+                border-radius: 24px;
+                background: #262626;
+                height: auto;
+
+                .login_box_stack {
+                    width: 50%;
+                    margin: auto;
+                    padding: 48px 0;
+
+                    @include sm {
+                        width: 100%;
+                        padding: 24px;
+                    }
+                }
+            }
+        }
+    }
+}
