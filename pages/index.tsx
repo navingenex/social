@@ -1,7 +1,12 @@
-import { Button, Typography } from "@mui/material"
+import { Box, Button, Typography } from "@mui/material";
+import Layout from "../components/Layout";
 
-export default function Home() {
+export default function Dashboard() {
   return (
-    <Typography>Hello</Typography>
-  )
+    <Layout>
+      <Box>
+        <Typography>hi there</Typography>
+      </Box>
+    </Layout>
+  );
 }

@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 /* PetSchema will correspond to a collection in your MongoDB database. */
 
-const UserSchema = mongoose.model('User', new mongoose.Schema({
+const User = new mongoose.Schema({
     email: {
         type: String,
         required: true
@@ -16,6 +16,6 @@ const UserSchema = mongoose.model('User', new mongoose.Schema({
         required: true,
         minLength: [6, "password must be 6 charecters long"]
     }
-}))
-export default UserSchema;
-// export default mongoose.model('User', UserSchema)
+})
+// export default UserSchema;
+export default mongoose.models.User || mongoose.model('User', User)

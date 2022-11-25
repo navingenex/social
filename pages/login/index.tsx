@@ -6,8 +6,24 @@ import Image from "next/image";
 import loginImg from "./../../public/login.png";
 import SocialInput from "../../components/SocialInput";
 import Link from "next/link";
+import { ApiService } from "../../service/apiService";
+import { useRouter } from "next/router";
 export default function Login() {
-  const [payload, setPayload] = React.useState({ email: "", password: "" });
+  const router = useRouter();
+  const [payload, setPayload] = React.useState<{
+    userName: string;
+    password: string;
+  }>({
+    userName: "",
+    password: "",
+  });
+
+  async function handleLogin(): Promise<void> {
+    try {
+      const response = await ApiService.login(payload);
+      router.push("/");
+    } catch (error) {}
+  }
   return (
     <Box className={login._login}>
       <Stack className={login._login_container}>
@@ -35,9 +51,9 @@ export default function Login() {
               </Stack>
               <Stack direction="column" spacing={5}>
                 <SocialInput
-                  value={payload.email}
+                  value={payload.userName}
                   onChange={(e: string) =>
-                    setPayload((payload) => ({ ...payload, email: e }))
+                    setPayload((payload) => ({ ...payload, userName: e }))
                   }
                   type="text"
                   label="Username"
@@ -56,6 +72,7 @@ export default function Login() {
                   color="primary"
                   className="text-white fs-12"
                   variant="contained"
+                  onClick={handleLogin}
                 >
                   Log in
                 </Button>

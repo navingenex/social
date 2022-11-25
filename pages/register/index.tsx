@@ -6,6 +6,7 @@ import Image from "next/image";
 import loginImg from "./../../public/login.png";
 import SocialInput from "../../components/SocialInput";
 import Link from "next/link";
+import { ApiService } from "../../service/apiService";
 export default function Register() {
   const [payload, setPayload] = React.useState<{
     email: string;
@@ -16,6 +17,11 @@ export default function Register() {
     password: "",
     userName: "",
   });
+  async function handleSignup(): Promise<void> {
+    try {
+      const response = await ApiService.signUp(payload);
+    } catch (error) {}
+  }
   return (
     <Box className={login._login}>
       <Stack className={login._login_container}>
@@ -79,6 +85,7 @@ export default function Register() {
                   color="primary"
                   className="text-white fs-12"
                   variant="contained"
+                  onClick={handleSignup}
                 >
                   Log in
                 </Button>
