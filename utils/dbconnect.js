@@ -11,7 +11,7 @@ export default async function dbConnect() {
   }
 
   /* connecting to our database */
-  const db = await mongoose.connect("mongodb://localhost:27017/social", {
+  const db = await mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
   });
   //   console.log(db.connections);
